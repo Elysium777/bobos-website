@@ -1,5 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
+"use client";
+
+import { useState } from "react";
+import WaitlistDialog from "./WaitlistDialog";
+
 export default function Hero() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
     <section
       id="hero"
@@ -17,10 +23,17 @@ export default function Hero() {
             <span className="text-[#00FF85]">AGENTS.</span>
           </span>
         </h1>
-        <button className="bg-[#00FF85] text-black px-8 py-3 rounded-full font-semibold mt-4">
+        <button 
+          onClick={() => setIsDialogOpen(true)}
+          className=" text-[#14F46F]  border border-[#14F46F] px-4 py-2 rounded-md font-semibold text-xl mt-4 hover:bg-[#14F46F]/10 transition-colors"
+        >
           Join Waitlist
         </button>
       </div>
+      <WaitlistDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+      />
     </section>
   )
 }
