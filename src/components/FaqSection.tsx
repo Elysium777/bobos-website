@@ -1,0 +1,50 @@
+/* eslint-disable @next/next/no-img-element */
+import FaqItem from "./FaqItem";
+
+const faqItems = [
+  {
+    question: "What is BobOS?",
+    answer: "BobOS is an advanced AI agent operating system that helps users interact with blockchain and web3 services seamlessly. It provides a user-friendly interface for complex blockchain operations."
+  },
+  {
+    question: "What can Bob do for me?",
+    answer: "Bob can assist you with various blockchain operations, from simple transactions to complex DeFi interactions. It can help you manage assets, interact with smart contracts, and navigate the web3 ecosystem without requiring deep technical knowledge."
+  },
+  {
+    question: "How secure is BobOS?",
+    answer: "BobOS is built with security as a top priority. It uses TEE (Trusted Execution Environment) technology to protect your data, ensuring that your information and transactions remain private and secure."
+  },
+  {
+    question: "Can I develop my own agent for BobOS?",
+    answer: "Yes! BobOS has an open agent marketplace where developers can create and publish their own agents without permission. These agents can interact directly with the blockchain in specific domains."
+  }
+];
+
+export default function FaqSection() {
+  return (
+    <section
+      id="section3"
+      className="h-screen border flex flex-col items-center justify-center relative bg-[url('/bg/section3.png')] bg-contain bg-no-repeat bg-bottom"
+    >
+      <img src="/bg/blur3.png" className="absolute w-[800px] left-0 bottom-0" alt="" />
+      <h2 className="text-white text-3xl">Frequently Asked Questions</h2>
+      <div className="mt-[115px] w-full max-w-[960px] space-y-4 px-10">
+        {faqItems.map((item, index) => (
+          <FaqItem
+            key={index}
+            question={item.question}
+            answer={item.answer}
+          />
+        ))}
+      </div>
+      <div className="absolute bottom-0 left-0 w-full">
+        <div className="mx-10 border-t border-[#333]">
+          <div className="max-w-[960px] pl-[40px] py-6">
+            <h3 className="text-[#14F46F] text-sm">BobOS</h3>
+            <p className="text-[#B7CBC1] mt-2 text-xs">Delegate your intent to Bob, and receive best return.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
