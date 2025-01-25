@@ -1,16 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { Scene } from "@/components";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
     <main className="relative">
-      <section
-        id="hero"
-        className="h-screen flex items-end justify-center relative bg-[url('/bg/section1.png')] bg-cover bg-center"
-      >
-        
-      </section>
+      <Hero />
       <section
         id="section1"
         className="h-screen flex items-center justify-start relative"
