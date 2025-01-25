@@ -7,14 +7,9 @@ export default function Home() {
     <main className="relative">
       <section
         id="hero"
-        className="h-screen flex items-end justify-center relative"
+        className="h-screen flex items-end justify-center relative bg-[url('/bg/section1.png')] bg-cover bg-center"
       >
-        <div id="text-1" className="text-center mb-64 z-10">
-          <h1 className="text-8xl font-medium mb-5">Meet the MacBook Pro M4</h1>
-          <p className="text-4xl font-light text-gray-500">
-            Power re-imagined.
-          </p>
-        </div>
+        
       </section>
       <section
         id="section1"
@@ -45,7 +40,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Scene />
+      {/* <Scene /> */}
     </main>
   );
 }

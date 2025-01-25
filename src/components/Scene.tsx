@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { MacBook } from "./MacBook";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ContactShadows } from "@react-three/drei";
+import { ContactShadows, OrbitControls } from "@react-three/drei";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,10 +66,12 @@ export function Scene() {
 
   return (
     <div className="fixed inset-0">
-      <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-        <directionalLight intensity={5} position={[1, 3, 3]} />
+      <Canvas camera={{ position: [0, 0, 0.2], fov: 60 }}>
+        <directionalLight intensity={5} position={[0.1, 0.1, 0.2]} />
         <MacBook />
+        <axesHelper scale={2} />
         <ContactShadows opacity={0.3} position={[0, -0.9, 0]} />
+        {/* <OrbitControls /> */}
       </Canvas>
     </div>
   );
