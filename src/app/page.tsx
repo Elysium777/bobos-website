@@ -2,6 +2,7 @@
 "use client";
 
 import Hero from "@/components/Hero";
+import InfoCard from "@/components/InfoCard";
 
 export default function Home() {
   return (
@@ -9,15 +10,34 @@ export default function Home() {
       <Hero />
       <section
         id="section1"
-        className="h-screen flex items-center justify-start relative"
+        className="h-screen border flex flex-col items-center justify-center relative"
       >
-        <div className="container mx-auto px-6">
-          <div id="text-2" className="max-w-lg opacity-0">
-            <h2 className="text-7xl font-medium mb-4">Retina Display</h2>
-            <p className="text-3xl font-light text-gray-500">
-              Razor-sharp text, breathtaking colors, and lifelike tones for an
-              immersive visual experience.
-            </p>
+        <h2 className="text-white text-3xl">Meet Bob：Your Personal AI Agent,Onchain</h2>
+        <div className="flex items-center mt-[115px] gap-[38px]">
+          <div className="flex flex-col gap-[230px]">
+            <InfoCard
+              icon="/icon/chat.svg"
+              title="Agent to Agent"
+              content="Bob is your assistance and will find you the best agent service provider."
+            />
+            <InfoCard
+              icon="/icon/route.svg"
+              title="Seamless"
+              content="BobBob helps transform your intent into onchain transactions, you do not even need to know anything about wallet."
+            />
+          </div>
+          <div className="w-[250px] h-[544px]"></div>
+          <div className="flex flex-col gap-[230px]">
+            <InfoCard
+              icon="/icon/copy.svg"
+              title="Composability"
+              content="Support different frameworks, Eliza, G.A.M.E and more."
+            />
+            <InfoCard
+              icon="/icon/route.svg"
+              title="Data protection"
+              content="All your data in BobOS are not sharing with other agents, powered by TEE."
+            />
           </div>
         </div>
       </section>
