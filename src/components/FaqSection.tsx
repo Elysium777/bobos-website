@@ -24,9 +24,9 @@ export default function FaqSection() {
   return (
     <section
       id="section3"
-      className="h-screen border flex flex-col items-center justify-center relative bg-[url('/bg/section3.png')] bg-contain bg-no-repeat bg-bottom"
+      className="h-screen border flex flex-col items-center justify-center relative bg-[url('/bg/section3.png')] bg-contain bg-no-repeat bg-bottom overflow-hidden"
     >
-      <img src="/bg/blur3.png" className="absolute w-[800px] left-0 bottom-0" alt="" />
+      <img src="/bg/blur3.png" className="absolute w-[800px] h-screen overflow-hidden left-0 bottom-0" alt="" />
       <h2 className="text-white text-3xl">Frequently Asked Questions</h2>
       <div className="mt-[115px] w-full max-w-[960px] space-y-4 px-10">
         {faqItems.map((item, index) => (
