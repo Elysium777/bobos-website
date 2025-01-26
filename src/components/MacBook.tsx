@@ -10,8 +10,8 @@ export function MacBook() {
   const gltf = useGLTF("/assets/Phone.glb");
   console.log('Model structure:', gltf);
 
-  const groupRef = useRef<THREE.Group>(null);
-  const phoneRef = useRef<THREE.Mesh>(null);
+  const groupRef = useRef<THREE.Group>(null!);
+  const phoneRef = useRef<THREE.Mesh>(null!);
 
   useEffect(() => {
     if (!groupRef.current || !phoneRef.current) return;
@@ -21,19 +21,20 @@ export function MacBook() {
         scrollTrigger: {
           trigger: "#section1",
           start: "top bottom",
-          scrub: true,
           end: "top top",
+          scrub: true,
         },
       })
       .to(groupRef.current.rotation, {
         x: 0,
-        y: Math.PI * 0.01,
+        y: 0,
+        z: 0,
         ease: "power2.inOut",
       })
       .to(
         groupRef.current.position,
         {
-          x: 0.1,
+          x: 0,
           ease: "power2.inOut",
         },
         "<"
@@ -42,31 +43,23 @@ export function MacBook() {
     gsap
       .timeline({
         scrollTrigger: {
-          trigger: "#section2",
-          start: "top bottom",
+          trigger: "#section1",
+          start: "bottom center",
+          end: "bottom top",
           scrub: true,
-          end: "top top",
         },
       })
-      .to(groupRef.current.rotation, {
-        y: -Math.PI * 0.01,
+      .to(groupRef.current.position, {
+        y: 1,
         ease: "power2.inOut",
-      })
-      .to(
-        groupRef.current.position,
-        {
-          x: -0.1,
-          ease: "power2.inOut",
-        },
-        "<"
-      );
+      });
   });
 
   return (
     <group
       ref={groupRef}
-      position={[0, -0.07, 0]}
-      rotation={[0, 0, 0]}
+      position={[0.12, -0.07, 0]}
+      rotation={[-0.4, -0.8, -0.3]}
       scale={1}
     >
       <mesh ref={phoneRef}>
