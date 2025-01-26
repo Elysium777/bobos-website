@@ -72,7 +72,7 @@ const TechStackSection: React.FC = () => {
   return (
     <section
       id="section2"
-      className="h-screen border flex flex-col items-center justify-center relative bg-[url('/bg/section2.png')] bg-contain bg-no-repeat bg-bottom overflow-hidden"
+      className="h-screen flex flex-col items-center justify-center relative bg-[url('/bg/section2.png')] bg-contain bg-no-repeat bg-bottom overflow-hidden"
     >
       <h2 className="text-white text-3xl">The BobOS Tech Stack</h2>
       <div className="flex items-center mt-[115px] gap-[108px] relative px-10">

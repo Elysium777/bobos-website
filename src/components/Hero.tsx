@@ -14,7 +14,7 @@ export default function Hero() {
       <img src="/bg/blur1.png" className="absolute w-[784px] left-0 top-[100px]" alt="" />
       <img src="/bg/blur2.png" className="absolute w-[784px] right-0 top-0" alt="" />
       <img src="/bg/circle.png" className="absolute w-[780px] bottom-[150px] right-0" alt="" />
-      <div className="bg-[url('/bg/vector.png')] bg-[length:140px_140px] bg-no-repeat bg-left-top pt-8 pl-6 relative top-[180px] left-[248px]">
+      <div className="bg-[url('/bg/vector.png')] w-fit bg-[length:140px_140px] bg-no-repeat bg-left-top pt-8 pl-6 relative top-[180px] left-[248px]">
         <h1 className="text-6xl font-bold mb-6">
           Onboarding the next billion<br />
           <span className="mt-6">
@@ -23,14 +23,14 @@ export default function Hero() {
             <span className="text-[#00FF85]">AGENTS.</span>
           </span>
         </h1>
-        <button 
+        <button
           onClick={() => setIsDialogOpen(true)}
           className=" text-[#14F46F]  border border-[#14F46F] px-4 py-2 rounded-md font-semibold text-xl mt-4 hover:bg-[#14F46F]/10 transition-colors"
         >
           Join Waitlist
         </button>
       </div>
-      <WaitlistDialog 
+      <WaitlistDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
       />

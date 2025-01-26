@@ -4,7 +4,7 @@ export default function IntroSection() {
   return (
     <section
       id="section1"
-      className="h-screen border flex flex-col items-center justify-center relative"
+      className="h-screen flex flex-col items-center justify-center relative"
     >
       <h2 className="text-white text-3xl">Meet Bob：Your Personal AI Agent,Onchain</h2>
       <div className="flex items-center mt-[115px] gap-[38px]">
