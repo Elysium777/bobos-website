@@ -1,36 +1,61 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 
+const pointContents = [
+  {
+    title: "Input Module",
+    description: "Voice/Text/Image input through Web/App/Telegram/Email/SMS to connect with your personal assistant anytime"
+  },
+  {
+    title: "Data Storage",
+    description: "Private storage ensuring user data security"
+  },
+  {
+    title: "Intent Parser",
+    description: "Utilizing advanced models to interpret user intent and find suitable Agents"
+  },
+  {
+    title: "Wallet Module",
+    description: "Pay corresponding Agents and authorize transactions"
+  },
+  {
+    title: "Agent Store",
+    description: "Any developer can develop Agents without permission and integrate with BobOS. Agents interact directly with blockchain in specific domains"
+  }
+];
+
 const TechStackSection: React.FC = () => {
   const [hoveredPoint, setHoveredPoint] = useState<number | null>(0);
+  const [isTextVisible, setIsTextVisible] = useState(true);
+  const [currentContent, setCurrentContent] = useState({
+    title: pointContents[0].title,
+    description: pointContents[0].description
+  });
 
-  const pointContents = [
-    {
-      title: "Input Module",
-      description: "Voice/Text/Image input through Web/App/Telegram/Email/SMS to connect with your personal assistant anytime"
-    },
-    {
-      title: "Data Storage",
-      description: "Private storage ensuring user data security"
-    },
-    {
-      title: "Intent Parser",
-      description: "Utilizing advanced models to interpret user intent and find suitable Agents"
-    },
-    {
-      title: "Wallet Module",
-      description: "Pay corresponding Agents and authorize transactions"
-    },
-    {
-      title: "Agent Store",
-      description: "Any developer can develop Agents without permission and integrate with BobOS. Agents interact directly with blockchain in specific domains"
-    }
-  ];
+
 
 
   useEffect(() => {
-    // resetToFirstPoint();
-  }, []);
+    if (hoveredPoint !== null) {
+      setIsTextVisible(false);
+      setTimeout(() => {
+        setCurrentContent({
+          title: pointContents[hoveredPoint].title,
+          description: pointContents[hoveredPoint].description
+        });
+        setIsTextVisible(true);
+      }, 300); // Half of the transition duration
+    } else {
+      setIsTextVisible(false);
+      setTimeout(() => {
+        setCurrentContent({
+          title: pointContents[0].title,
+          description: pointContents[0].description
+        });
+        setIsTextVisible(true);
+      }, 300);
+    }
+  }, [hoveredPoint]);
 
   const getOpacity = (pointIndex: number) => {
     if (hoveredPoint === null) {
@@ -67,7 +92,7 @@ const TechStackSection: React.FC = () => {
                 transformStyle: 'preserve-3d',
                 transform: `translateY(${-160 + pointIndex * 40}px) rotateZ(-90deg) rotateY(45deg) rotateZ(45deg) scaleZ(${hoveredPoint === pointIndex ? 1 : 0.1})`,
                 zIndex: 50 - pointIndex * 10,
-                transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                transition: 'transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 opacity: getOpacity(pointIndex),
                 willChange: 'transform'
               }}
@@ -143,11 +168,15 @@ const TechStackSection: React.FC = () => {
             </div>
           ))}
         </div>
-        <div className="right-10 w-[400px] transition-opacity duration-500">
-          <h3 className="text-3xl font-medium pt-5 pb-2 text-[#14F46F]">{hoveredPoint !== null ? pointContents[hoveredPoint].title : pointContents[0].title}</h3>
-          <p className="max-w-[400px] text-lg text-[#B7CBC1] mt-[38px]">
-            {hoveredPoint !== null ? pointContents[hoveredPoint].description : pointContents[0].description}
-          </p>
+        <div className="right-10 w-[400px]">
+          <div className={`transition-all duration-500 transform ${isTextVisible ? 'opacity-100' : 'opacity-0'}`}>
+            <h3 className="text-3xl font-medium pt-5 pb-2 text-[#14F46F]">
+              {currentContent.title}
+            </h3>
+            <p className="max-w-[400px] text-lg text-[#B7CBC1] mt-[38px]">
+              {currentContent.description}
+            </p>
+          </div>
         </div>
       </div>
     </section >
