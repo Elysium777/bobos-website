@@ -2,7 +2,30 @@
 import React, { useState, useEffect } from 'react';
 
 const TechStackSection: React.FC = () => {
-  const [hoveredPoint, setHoveredPoint] = useState<number | null>(0); // 默认选中第一个点
+  const [hoveredPoint, setHoveredPoint] = useState<number | null>(0);
+
+  const pointContents = [
+    {
+      title: "Input Module",
+      description: "Voice/Text/Image input through Web/App/Telegram/Email/SMS to connect with your personal assistant anytime"
+    },
+    {
+      title: "Data Storage",
+      description: "Private storage ensuring user data security"
+    },
+    {
+      title: "Intent Parser",
+      description: "Utilizing advanced models to interpret user intent and find suitable Agents"
+    },
+    {
+      title: "Wallet Module",
+      description: "Pay corresponding Agents and authorize transactions"
+    },
+    {
+      title: "Agent Store",
+      description: "Any developer can develop Agents without permission and integrate with BobOS. Agents interact directly with blockchain in specific domains"
+    }
+  ];
 
   const resetToFirstPoint = () => {
     // 重置所有点的状态
@@ -28,18 +51,18 @@ const TechStackSection: React.FC = () => {
     if (hoveredPoint === null) {
       // 没有hover时，第一个点保持不透明，其他点根据距离变淡
       if (pointIndex === 0) return 1;
-      return Math.max(0.1, 1 - pointIndex * 0.2);
+      return Math.max(0.2, 1 - pointIndex * 0.35);
     }
     if (hoveredPoint === pointIndex) return 1;
     // 计算距离，越远越透明
     const distance = Math.abs(hoveredPoint - pointIndex);
-    return Math.max(0.1, 1 - distance * 0.2);
+    return Math.max(0.2, 1 - distance * 0.35);
   };
 
   return (
     <section
       id="section2"
-      className="h-screen border flex flex-col items-center justify-center relative"
+      className="h-screen border flex flex-col items-center justify-center relative bg-[url('/bg/section2.png')] bg-contain bg-no-repeat bg-bottom overflow-hidden"
     >
       <h2 className="text-white text-3xl">The BobOS Tech Stack</h2>
       <div className="flex items-center mt-[115px] gap-[108px] relative px-10">
@@ -83,58 +106,65 @@ const TechStackSection: React.FC = () => {
             >
               {/* Front */}
               <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
                 style={{
                   transform: 'translateZ(10px)',
+                  opacity: getOpacity(0),
+                  pointerEvents: hoveredPoint === 0 ? 'auto' : 'none'
                 }}
               >
-                Point 1
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <div
+                    className="text-white font-medium"
+                    style={{
+                      transform: 'translateZ(20px)',
+                      textShadow: '0 0 10px rgba(0,0,0,0.3)'
+                    }}
+                  >
+                    {pointContents[0].title}
+                  </div>
+                </div>
               </div>
+
               {/* Back */}
               <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
                 style={{
                   transform: 'translateZ(-10px) rotateY(180deg)',
                 }}
-              >
-                {/* Back */}
-              </div>
+              />
+
               {/* Right */}
               <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
                 style={{
                   transform: 'rotateY(90deg) translateZ(190px)',
                 }}
-              >
-                {/* Right */}
-              </div>
+              />
+
               {/* Left */}
               <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
                 style={{
                   transform: 'rotateY(-90deg) translateZ(10px)',
                 }}
-              >
-                {/* Left */}
-              </div>
+              />
+
               {/* Top */}
               <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
                 style={{
                   transform: 'rotateX(90deg) translateZ(-190px)',
                 }}
-              >
-                {/* Top */}
-              </div>
+              />
+
               {/* Bottom */}
               <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
                 style={{
                   transform: 'rotateX(-90deg) translateZ(-10px)',
                 }}
-              >
-                {/* Bottom */}
-              </div>
+              />
             </div>
           </div>
 
@@ -166,58 +196,65 @@ const TechStackSection: React.FC = () => {
             >
               {/* Front */}
               <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
                 style={{
                   transform: 'translateZ(10px)',
+                  opacity: getOpacity(1),
+                  pointerEvents: hoveredPoint === 1 ? 'auto' : 'none'
                 }}
               >
-                Point 2
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <div
+                    className="text-white font-medium"
+                    style={{
+                      transform: 'translateZ(20px)',
+                      textShadow: '0 0 10px rgba(0,0,0,0.3)'
+                    }}
+                  >
+                    {pointContents[1].title}
+                  </div>
+                </div>
               </div>
+
               {/* Back */}
               <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
                 style={{
                   transform: 'translateZ(-10px) rotateY(180deg)',
                 }}
-              >
-                {/* Back */}
-              </div>
+              />
+
               {/* Right */}
               <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
                 style={{
                   transform: 'rotateY(90deg) translateZ(190px)',
                 }}
-              >
-                {/* Right */}
-              </div>
+              />
+
               {/* Left */}
               <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
                 style={{
                   transform: 'rotateY(-90deg) translateZ(10px)',
                 }}
-              >
-                {/* Left */}
-              </div>
+              />
+
               {/* Top */}
               <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
                 style={{
                   transform: 'rotateX(90deg) translateZ(-190px)',
                 }}
-              >
-                {/* Top */}
-              </div>
+              />
+
               {/* Bottom */}
               <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
                 style={{
                   transform: 'rotateX(-90deg) translateZ(-10px)',
                 }}
-              >
-                {/* Bottom */}
-              </div>
+              />
             </div>
           </div>
 
@@ -249,58 +286,65 @@ const TechStackSection: React.FC = () => {
             >
               {/* Front */}
               <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
                 style={{
                   transform: 'translateZ(10px)',
+                  opacity: getOpacity(2),
+                  pointerEvents: hoveredPoint === 2 ? 'auto' : 'none'
                 }}
               >
-                Point 3
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <div
+                    className="text-white font-medium"
+                    style={{
+                      transform: 'translateZ(20px)',
+                      textShadow: '0 0 10px rgba(0,0,0,0.3)'
+                    }}
+                  >
+                    {pointContents[2].title}
+                  </div>
+                </div>
               </div>
+
               {/* Back */}
               <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
                 style={{
                   transform: 'translateZ(-10px) rotateY(180deg)',
                 }}
-              >
-                {/* Back */}
-              </div>
+              />
+
               {/* Right */}
               <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
                 style={{
                   transform: 'rotateY(90deg) translateZ(190px)',
                 }}
-              >
-                {/* Right */}
-              </div>
+              />
+
               {/* Left */}
               <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
                 style={{
                   transform: 'rotateY(-90deg) translateZ(10px)',
                 }}
-              >
-                {/* Left */}
-              </div>
+              />
+
               {/* Top */}
               <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
                 style={{
                   transform: 'rotateX(90deg) translateZ(-190px)',
                 }}
-              >
-                {/* Top */}
-              </div>
+              />
+
               {/* Bottom */}
               <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
                 style={{
                   transform: 'rotateX(-90deg) translateZ(-10px)',
                 }}
-              >
-                {/* Bottom */}
-              </div>
+              />
             </div>
           </div>
 
@@ -332,58 +376,65 @@ const TechStackSection: React.FC = () => {
             >
               {/* Front */}
               <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
                 style={{
                   transform: 'translateZ(10px)',
+                  opacity: getOpacity(3),
+                  pointerEvents: hoveredPoint === 3 ? 'auto' : 'none'
                 }}
               >
-                Point 4
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <div
+                    className="text-white font-medium"
+                    style={{
+                      transform: 'translateZ(20px)',
+                      textShadow: '0 0 10px rgba(0,0,0,0.3)'
+                    }}
+                  >
+                    {pointContents[3].title}
+                  </div>
+                </div>
               </div>
+
               {/* Back */}
               <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
                 style={{
                   transform: 'translateZ(-10px) rotateY(180deg)',
                 }}
-              >
-                {/* Back */}
-              </div>
+              />
+
               {/* Right */}
               <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
                 style={{
                   transform: 'rotateY(90deg) translateZ(190px)',
                 }}
-              >
-                {/* Right */}
-              </div>
+              />
+
               {/* Left */}
               <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
                 style={{
                   transform: 'rotateY(-90deg) translateZ(10px)',
                 }}
-              >
-                {/* Left */}
-              </div>
+              />
+
               {/* Top */}
               <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
                 style={{
                   transform: 'rotateX(90deg) translateZ(-190px)',
                 }}
-              >
-                {/* Top */}
-              </div>
+              />
+
               {/* Bottom */}
               <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
                 style={{
                   transform: 'rotateX(-90deg) translateZ(-10px)',
                 }}
-              >
-                {/* Bottom */}
-              </div>
+              />
             </div>
           </div>
 
@@ -415,66 +466,73 @@ const TechStackSection: React.FC = () => {
             >
               {/* Front */}
               <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
                 style={{
                   transform: 'translateZ(10px)',
+                  opacity: getOpacity(4),
+                  pointerEvents: hoveredPoint === 4 ? 'auto' : 'none'
                 }}
               >
-                Point 5
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <div
+                    className="text-white font-medium"
+                    style={{
+                      transform: 'translateZ(20px)',
+                      textShadow: '0 0 10px rgba(0,0,0,0.3)'
+                    }}
+                  >
+                    {pointContents[4].title}
+                  </div>
+                </div>
               </div>
+
               {/* Back */}
               <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
                 style={{
                   transform: 'translateZ(-10px) rotateY(180deg)',
                 }}
-              >
-                {/* Back */}
-              </div>
+              />
+
               {/* Right */}
               <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
                 style={{
                   transform: 'rotateY(90deg) translateZ(190px)',
                 }}
-              >
-                {/* Right */}
-              </div>
+              />
+
               {/* Left */}
               <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
                 style={{
                   transform: 'rotateY(-90deg) translateZ(10px)',
                 }}
-              >
-                {/* Left */}
-              </div>
+              />
+
               {/* Top */}
               <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
                 style={{
                   transform: 'rotateX(90deg) translateZ(-190px)',
                 }}
-              >
-                {/* Top */}
-              </div>
+              />
+
               {/* Bottom */}
               <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80 flex items-center justify-center text-white font-medium"
+                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
                 style={{
                   transform: 'rotateX(-90deg) translateZ(-10px)',
                 }}
-              >
-                {/* Bottom */}
-              </div>
+              />
             </div>
           </div>
 
         </div>
-        <div>
-          <h3 className="text-3xl font-medium pt-5 pb-2 text-[#14F46F]">Agent Marketplace</h3>
+        <div className="right-10 w-[400px] transition-opacity duration-500">
+          <h3 className="text-3xl font-medium pt-5 pb-2 text-[#14F46F]">{hoveredPoint !== null ? pointContents[hoveredPoint].title : pointContents[0].title}</h3>
           <p className="max-w-[400px] text-lg text-[#B7CBC1] mt-[38px]">
-            Any developer can develop Agent without permission and connect to BobOS. Agent can directly interact with the blockchain in a certain field.
+            {hoveredPoint !== null ? pointContents[hoveredPoint].description : pointContents[0].description}
           </p>
         </div>
       </div>
