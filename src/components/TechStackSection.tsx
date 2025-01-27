@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import TechCube from './TechCube';
 
 const pointContents = [
   {
@@ -31,9 +32,6 @@ const TechStackSection: React.FC = () => {
     title: pointContents[0].title,
     description: pointContents[0].description
   });
-
-
-
 
   useEffect(() => {
     if (hoveredPoint !== null) {
@@ -72,114 +70,45 @@ const TechStackSection: React.FC = () => {
   return (
     <section
       id="section2"
-      className="h-screen flex flex-col items-center justify-center relative bg-[url('/bg/section2.png')] bg-contain bg-no-repeat bg-bottom overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center relative bg-[url('/bg/section2.png')] bg-contain bg-no-repeat bg-bottom overflow-hidden px-4 py-12 md:py-0"
     >
-      <h2 className="text-white text-3xl">The BobOS Tech Stack</h2>
-      <div className="flex items-center mt-[115px] gap-[108px] relative px-10">
-        <img src="/bg/vector-rb.png" className="absolute bottom-0 right-0 w-[140px]" alt="" />
-        <div className="relative size-60" style={{
-          transformStyle: 'preserve-3d',
-          // perspective: '1000px',
-          transform: 'translateZ(0)',
-          translate: '0 100px 0',
+      <h2 className="text-white text-2xl sm:text-3xl text-center mb-8 md:mb-0">The BobOS Tech Stack</h2>
+      <div className="flex flex-col md:flex-row items-center justify-center mt-4 md:mt-[115px] gap-20 md:gap-[108px] relative w-full max-w-6xl">
 
-        }}>
-          {[0, 1, 2, 3, 4].map((pointIndex) => (
-            <div
-              key={pointIndex}
-              className="absolute w-full h-full"
-              style={{
-                transformStyle: 'preserve-3d',
-                transform: `translateY(${-160 + pointIndex * 40}px) rotateZ(-90deg) rotateY(45deg) rotateZ(45deg) scaleZ(${hoveredPoint === pointIndex ? 1 : 0.1})`,
-                zIndex: 50 - pointIndex * 10,
-                transition: 'transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                opacity: getOpacity(pointIndex),
-                willChange: 'transform'
-              }}
-              data-point={pointIndex}
-              onMouseEnter={() => {
-                setHoveredPoint(pointIndex);
-              }}
-              onMouseLeave={() => {
-                setHoveredPoint(null);
-              }}
-            >
-              {/* Front */}
-              <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
-                style={{
-                  transform: 'translateZ(10px)',
-                  opacity: getOpacity(pointIndex),
-                  pointerEvents: hoveredPoint === pointIndex ? 'auto' : 'none'
-                }}
-              >
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <div
-                    className="text-white font-medium"
-                    style={{
-                      transform: 'translateZ(20px)',
-                      textShadow: '0 0 10px rgba(0,0,0,0.3)'
-                    }}
-                  >
-                    {pointContents[pointIndex].title}
-                  </div>
-                </div>
-              </div>
 
-              {/* Back */}
-              <div
-                className="absolute w-[200px] h-[200px] bg-green-400 bg-opacity-80"
-                style={{
-                  transform: 'translateZ(-10px) rotateY(180deg)',
-                }}
+        <div className="relative w-full md:w-auto flex justify-center translate-x-8">
+          <div className="relative size-60 scale-[0.6] md:scale-100" style={{
+            transformStyle: 'preserve-3d',
+            transform: 'translateZ(0)',
+            translate: '0 100px 0',
+          }}>
+            {[0, 1, 2, 3, 4].map((pointIndex) => (
+              <TechCube
+                key={pointIndex}
+                pointIndex={pointIndex}
+                hoveredPoint={hoveredPoint}
+                title={pointContents[pointIndex].title}
+                getOpacity={getOpacity}
+                onMouseEnter={() => setHoveredPoint(pointIndex)}
+                onMouseLeave={() => { }}
               />
-
-              {/* Right */}
-              <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
-                style={{
-                  transform: 'rotateY(90deg) translateZ(190px)',
-                }}
-              />
-
-              {/* Left */}
-              <div
-                className="absolute w-[20px] h-[200px] bg-green-500 bg-opacity-80"
-                style={{
-                  transform: 'rotateY(-90deg) translateZ(10px)',
-                }}
-              />
-
-              {/* Top */}
-              <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
-                style={{
-                  transform: 'rotateX(90deg) translateZ(-190px)',
-                }}
-              />
-
-              {/* Bottom */}
-              <div
-                className="absolute w-[200px] h-[20px] bg-green-300 bg-opacity-80"
-                style={{
-                  transform: 'rotateX(-90deg) translateZ(-10px)',
-                }}
-              />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        <div className="right-10 w-[400px]">
+
+        <div className="w-full md:w-[400px] px-4 md:px-0 relative pb-4 pr-4">
+          <img src="/bg/vector-rb.png" className="absolute bottom-0 right-0 w-[80px] md:w-[140px] " alt="" />
           <div className={`transition-all duration-500 transform ${isTextVisible ? 'opacity-100' : 'opacity-0'}`}>
-            <h3 className="text-3xl font-medium pt-5 pb-2 text-[#14F46F]">
+            <h3 className="text-2xl md:text-3xl font-medium pt-5 pb-2 text-[#14F46F] text-center md:text-left">
               {currentContent.title}
             </h3>
-            <p className="max-w-[400px] text-lg text-[#B7CBC1] mt-[38px]">
+            <p className="text-base md:text-lg text-[#B7CBC1] mt-4 md:mt-[38px] text-center md:text-left">
               {currentContent.description}
             </p>
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 
