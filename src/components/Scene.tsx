@@ -10,62 +10,8 @@ import { ContactShadows, OrbitControls } from "@react-three/drei";
 gsap.registerPlugin(ScrollTrigger);
 
 export function Scene() {
-  // useEffect(() => {
-  //   const text1 = document.getElementById("text-1");
-  //   const text2 = document.getElementById("text-2");
-  //   const text3 = document.getElementById("text-3");
-
-  //   if (!text1 || !text2 || !text3) return;
-
-  //   gsap
-  //     .timeline({
-  //       scrollTrigger: {
-  //         trigger: "#section1",
-  //         start: "top bottom",
-  //         end: "10% bottom",
-  //         scrub: true,
-  //       },
-  //     })
-  //     .to(text1, {
-  //       opacity: 0,
-  //       ease: "power2.inOut",
-  //     });
-
-  //   gsap
-  //     .timeline({
-  //       scrollTrigger: {
-  //         trigger: "#section1",
-  //         start: "top 50%",
-  //         end: "top top",
-  //         scrub: true,
-  //       },
-  //     })
-  //     .to(text2, {
-  //       opacity: 1,
-  //       ease: "power2.inOut",
-  //     });
-
-  //   gsap
-  //     .timeline({
-  //       scrollTrigger: {
-  //         trigger: "#section2",
-  //         start: "top 50%",
-  //         end: "top top",
-  //         scrub: true,
-  //       },
-  //     })
-  //     .to(
-  //       text3,
-  //       {
-  //         opacity: 1,
-  //         ease: "power2.inOut",
-  //       },
-  //       "<"
-  //     );
-  // }, []);
-
   return (
-    <div className="fixed inset-0">
+    <div className="fixed inset-0 -translate-x-10 hidden md:block">
       <Canvas camera={{ position: [0, 0, 0.2] }}>
         <ambientLight intensity={0.5} />
         <directionalLight

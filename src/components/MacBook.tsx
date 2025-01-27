@@ -34,7 +34,7 @@ export function MacBook() {
       .to(
         groupRef.current.position,
         {
-          x: 0,
+          x: -0.0,
           y: -0.1,
           z: 0.04,
           ease: "power2.inOut",
