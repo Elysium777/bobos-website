@@ -66,11 +66,20 @@ export function Scene() {
 
   return (
     <div className="fixed inset-0">
-      <Canvas camera={{ position: [0, 0, 0.2], fov: 60 }}>
-        <directionalLight intensity={5} position={[0.1, 0.1, 0.2]} />
+      <Canvas camera={{ position: [0, 0, 0.2] }}>
+        <ambientLight intensity={0.5} />
+        <directionalLight
+          intensity={2}
+          position={[3, 3, 3]}
+          castShadow
+        />
+        <directionalLight
+          intensity={2}
+          position={[-3, -3, -3]}
+        />
         <MacBook />
         {/* <axesHelper scale={2} /> */}
-        <ContactShadows opacity={0.3} position={[0, -0.9, 0]} />
+        {/* <ContactShadows opacity={0.3} position={[0, -0.9, 0]} /> */}
         {/* <OrbitControls /> */}
       </Canvas>
     </div>

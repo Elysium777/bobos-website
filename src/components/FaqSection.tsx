@@ -28,7 +28,7 @@ export default function FaqSection() {
     >
       <img src="/bg/blur3.png" className="absolute w-[800px] h-screen overflow-hidden left-0 bottom-0" alt="" />
       <h2 className="text-white text-3xl">Frequently Asked Questions</h2>
-      <div className="mt-[115px] w-full max-w-[960px] space-y-4 px-10">
+      <div className="mt-[115px] w-full max-w-[960px] space-y-4 px-10 z-10">
         {faqItems.map((item, index) => (
           <FaqItem
             key={index}

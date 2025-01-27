@@ -35,6 +35,8 @@ export function MacBook() {
         groupRef.current.position,
         {
           x: 0,
+          y: -0.1,
+          z: 0.04,
           ease: "power2.inOut",
         },
         "<"
@@ -44,13 +46,13 @@ export function MacBook() {
       .timeline({
         scrollTrigger: {
           trigger: "#section1",
-          start: "bottom center",
+          start: "bottom bottom",
           end: "bottom top",
           scrub: true,
         },
       })
       .to(groupRef.current.position, {
-        y: 1,
+        y: 0.4,
         ease: "power2.inOut",
       });
   });
@@ -58,8 +60,8 @@ export function MacBook() {
   return (
     <group
       ref={groupRef}
-      position={[0.12, -0.07, 0]}
-      rotation={[-0.4, -0.8, -0.3]}
+      position={[0, -0.3, 0]}
+      rotation={[-1.57, 0, 0]}
       scale={1}
     >
       <mesh ref={phoneRef}>
